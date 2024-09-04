@@ -6,7 +6,7 @@ services:
   nefarious:
     image: lardbit/nefarious
     ports:
-      - "8000:80"
+      - "8222:80"
     labels:
       - com.centurylinklabs.watchtower.enable=true
     restart: always
