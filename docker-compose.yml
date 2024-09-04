@@ -35,7 +35,7 @@ services:
     restart: always
     entrypoint: /app/entrypoint-celery.sh
     volumes:
-      - ${HOST_DOWNLOAD_PATH:-/tmp}:/downloads
+      - /app/storage/downloads:/downloads
       # persistent named volume for sqlite database
       - nefarious-db:/nefarious-db
     logging:
@@ -59,7 +59,7 @@ services:
     restart: always
     entrypoint: /app/entrypoint-celery.sh
     volumes:
-      - ${HOST_DOWNLOAD_PATH:-/tmp}:/downloads
+      - /app/storage/downloads:/downloads
       # persistent named volume for sqlite database
       - nefarious-db:/nefarious-db
     logging:
@@ -115,7 +115,7 @@ services:
       - PUID=${HOST_DOWNLOAD_UID:-1000}
       - PGID=${HOST_DOWNLOAD_GID:-1000}
     volumes:
-      - ${HOST_DOWNLOAD_PATH:-/tmp}:/downloads
+      - /app/storage/downloads:/downloads
       - ./transmission-settings.json:/config/settings.json:ro
     labels:
       - com.centurylinklabs.watchtower.enable=true
